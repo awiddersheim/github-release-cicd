@@ -14,7 +14,7 @@ def local_scheme(version):
 
     for item in iter_entry_points(
         'setuptools_scm.local_scheme',
-        'node-and-timestamp'
+        'node-and-timestamp',
     ):
         return item.load()(version)
 
@@ -27,7 +27,7 @@ setup(
     name='github-release-cicd',
     use_scm_version={
         'local_scheme': local_scheme,
-        'write_to': 'github_release_cicd/version.py'
+        'write_to': 'github_release_cicd/version.py',
     },
     setup_requires=[
         'setuptools_scm',
@@ -70,7 +70,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Operating System :: OS Independent'
+        'Operating System :: OS Independent',
     ],
     python_requires='!=2.*, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
 )
