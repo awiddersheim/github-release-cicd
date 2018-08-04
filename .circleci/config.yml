@@ -47,7 +47,7 @@ jobs:
       - run: |
           export GITHUB_RELEASE_CICD_REPO=$(python setup.py --name)
           export GITHUB_RELEASE_CICD_TAG=$(python setup.py --version)
-          export GITHUB_RELEASE_CICD_MESSAGE=$(git show --no-patch --pretty=format:"%s%n%b ${CIRCLE_SHA1})
+          export GITHUB_RELEASE_CICD_MESSAGE=$(git show --no-patch --pretty=format:"%s%n%b" ${CIRCLE_SHA1})
           export GITHUB_RELEASE_CICD_TARGET=${CIRCLE_SHA1}
           /home/circleci/.local/bin/tox -- --assets '/tmp/workspace/dist/*'
 
