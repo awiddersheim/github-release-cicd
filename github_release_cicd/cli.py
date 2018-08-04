@@ -28,7 +28,7 @@ class GithubRelease(object):
 def cli(ctx, token, repo):
     """Manage GitHub releases."""
 
-    ctx.obj = Github(token).get_user().get_repo(repo)
+    #ctx.obj = Github(token).get_user().get_repo(repo)
 
 
 @cli.command()
@@ -50,13 +50,13 @@ def cli(ctx, token, repo):
     required=True,
 )
 @click.option(
-    '--draft',
+    '--draft/--no-draft',
     help='Release is a draft.',
     envvar='DRAFT',
     default=False,
 )
 @click.option(
-    '--prerelease',
+    '--prerelease/--no-prelease',
     help='Release is a prerelease.',
     envvar='PRERELEASE',
     default=False,
