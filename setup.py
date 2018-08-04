@@ -55,7 +55,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'github_release_cicd=github_release_cicd.cli:cli',
+            'github_release_cicd=github_release_cicd.cli:main',
         ],
     },
     zip_safe=False,

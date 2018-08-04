@@ -10,11 +10,7 @@ class GithubRelease(object):
         self.github = github
 
 
-@click.group(
-    context_settings={
-        'auto_envvar_prefix': 'GITHUB_RELEASE_CICD',
-    },
-)
+@click.group()
 @click.option(
     '--token',
     help='GitHub API token.',
@@ -91,3 +87,10 @@ def create(repo, tag, name, message, draft, prerelease, target, assets):
 
     for item in glob.glob(assets):
         release.upload_asset(item)
+
+
+def main():
+    cli(
+        auto_envvar_prefix='GITHUB_RELEASE_CICD',
+        prog_name='github_release_cicd',
+    )

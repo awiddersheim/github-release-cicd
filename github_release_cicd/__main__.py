@@ -1,3 +1,3 @@
-from github_release_cicd.cli import cli
+from github_release_cicd.cli import main
 
-cli(prog_name='github_release_cicd')
+main()
