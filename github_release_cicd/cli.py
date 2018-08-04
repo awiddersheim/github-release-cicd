@@ -28,7 +28,7 @@ class GithubRelease(object):
 def cli(ctx, token, repo):
     """Manage GitHub releases."""
 
-    #ctx.obj = Github(token).get_user().get_repo(repo)
+    ctx.obj = Github(token).get_user().get_repo(repo)
 
 
 @cli.command()
