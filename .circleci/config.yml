@@ -34,11 +34,22 @@ jobs:
           paths:
             - dist
 
-  deploy:
+  deploy_pypi:
     docker:
       - image: circleci/python:3
     environment:
-      TOXENV: deploy
+      TOXENV: deploy_pypi
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: pip install --user tox
+      - run: /home/circleci/.local/bin/tox -- '/tmp/workspace/dist/*'
+
+  deploy_github:
+    docker:
+      - image: circleci/python:3
+    environment:
+      TOXENV: deploy_github
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -70,7 +81,13 @@ workflows:
           filters:
             tags:
               only: /^v.*/
-      - deploy:
+      - deploy_pypi:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy_github:
           requires:
             - build
           filters:
