@@ -15,12 +15,14 @@ class GithubRelease(object):
     '--token',
     help='GitHub API token.',
     envvar='TOKEN',
+    show_envvar=True,
     required=True,
 )
 @click.option(
     '--repo',
     help='GitHub repository name.',
     envvar='REPO',
+    show_envvar=True,
     required=True,
 )
 @click.version_option()
@@ -36,40 +38,47 @@ def cli(ctx, token, repo):
     '--tag',
     help='Release tag.',
     envvar='TAG',
+    show_envvar=True,
     required=True,
 )
 @click.option(
     '--name',
     help='Release name.',
     envvar='NAME',
+    show_envvar=True,
 )
 @click.option(
     '--message',
     help='Release message.',
     envvar='MESSAGE',
+    show_envvar=True,
     required=True,
 )
 @click.option(
     '--draft/--no-draft',
     help='Release is a draft.',
     envvar='DRAFT',
+    show_envvar=True,
     default=False,
 )
 @click.option(
     '--prerelease/--no-prelease',
     help='Release is a prerelease.',
     envvar='PRERELEASE',
+    show_envvar=True,
     default=False,
 )
 @click.option(
     '--target',
     help='Release commit target.',
     envvar='TARGET',
+    show_envvar=True,
 )
 @click.option(
     '--assets',
     help='Release assets to upload.',
     envvar='ASSETS',
+    show_envvar=True,
 )
 @click.pass_obj
 def create(repo, tag, name, message, draft, prerelease, target, assets):
@@ -83,6 +92,7 @@ def create(repo, tag, name, message, draft, prerelease, target, assets):
         name=tag,
         message=message,
         target_commitish=target,
+        prerelease=prerelease,
     )
 
     for item in glob.glob(assets):

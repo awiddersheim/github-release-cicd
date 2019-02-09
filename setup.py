@@ -26,6 +26,7 @@ with io.open('README.rst', encoding='utf-8') as f:
 setup(
     name='github-release-cicd',
     use_scm_version={
+        'git_describe_command': 'git describe --dirty --tags --long --match "v*.*" --exclude "*.dev*"',
         'local_scheme': local_scheme,
         'write_to': 'github_release_cicd/version.py',
     },
@@ -39,7 +40,7 @@ setup(
     long_description=long_description,
     packages=find_packages(exclude=['tests', 'tests.*']),
     install_requires=[
-        'click',
+        'click>=7',
         'pygithub',
     ],
     extras_require={
