@@ -59,11 +59,11 @@ workflows:
       - check_readme:
           filters:
             tags:
-              only: /^v[0-9.]*/
+              only: '/^v[0-9.]*/'
       - flake8:
           filters:
             tags:
-              only: /^v[0-9.]*/
+              only: '/^v[0-9.]*/'
       - flake8:
       - build:
           requires:
@@ -71,10 +71,10 @@ workflows:
             - flake8
           filters:
             tags:
-              only: /^v[0-9.]*/
+              only: '/^v[0-9.]*/'
       - deploy:
           requires:
             - build
           filters:
             tags:
-              only: /^v[0-9.]*/
+              only: '/^v[0-9.]*/'
