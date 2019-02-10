@@ -59,10 +59,12 @@ workflows:
       - check_readme:
           filters:
             tags:
+              ignore: /.*dev.*/
               only: /^v.*/
       - flake8:
           filters:
             tags:
+              ignore: /.*dev.*/
               only: /^v.*/
       - build:
           requires:
@@ -70,10 +72,12 @@ workflows:
             - flake8
           filters:
             tags:
+              ignore: /.*dev.*/
               only: /^v.*/
       - deploy:
           requires:
             - build
           filters:
             tags:
+              ignore: /.*dev.*/
               only: /^v.*/
