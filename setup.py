@@ -26,7 +26,7 @@ with io.open('README.rst', encoding='utf-8') as f:
 setup(
     name='github-release-cicd',
     use_scm_version={
-        'git_describe_command': 'git describe --dirty --tags --long --match "v*.*" --exclude "*.dev*"',
+        'git_describe_command': 'git describe --dirty --tags --long --match "v[0-9]*.[0-9]*.[0-9]*"',
         'local_scheme': local_scheme,
         'write_to': 'github_release_cicd/version.py',
     },
