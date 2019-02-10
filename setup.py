@@ -31,7 +31,7 @@ setup(
         'write_to': 'github_release_cicd/version.py',
     },
     setup_requires=[
-        'setuptools_scm',
+        'setuptools_scm>=3.2.0',
     ],
     author='Andrew Widdersheim',
     author_email='amwiddersheim@gmail.com',
