@@ -34,8 +34,8 @@ setup(
         'git_describe_command': 'git describe --dirty --tags --long --match {}'.format(
             os.getenv(
                 'SETUPTOOLS_SCM_PREVIOUS_TAG',
-                '"v*.*" --exclude "*.dev*"'
-            )
+                '"v*.*" --exclude "*.dev*"',
+            ),
         ),
         'local_scheme': local_scheme,
         'write_to': 'github_release_cicd/version.py',
