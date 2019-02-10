@@ -25,7 +25,9 @@ jobs:
     steps:
       - checkout
       - run: pip install --user tox
-      - run: /home/circleci/.local/bin/tox
+      - run: |
+          export SETUPTOOLS_SCM_PREVIOUS_TAG="$(git tag | sort -V | grep "^v.*" | grep -v ".dev" | tail -n 1)"
+          /home/circleci/.local/bin/tox
       - store_artifacts:
           path: dist
           destination: packages
