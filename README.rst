@@ -1,4 +1,4 @@
-GitHub Release CICD
+GitHub Release CI/CD
 ================================
 
 Helper tools to handle GitHub releases.
