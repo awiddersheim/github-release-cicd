@@ -1,4 +1,5 @@
 import io
+import os
 
 from setuptools import find_packages
 from setuptools import setup
@@ -26,7 +27,16 @@ with io.open('README.rst', encoding='utf-8') as f:
 setup(
     name='github-release-cicd',
     use_scm_version={
-        'git_describe_command': 'git describe --dirty --tags --long --match "v[0-9]*.[!dev]"',
+        # NOTE(awiddersheim): Pulling from an environment variable is a
+        # hack to get around the fact that `--exclude` for
+        # `git-describe` is not ubiquitous yet. Once that happens it can
+        # be removed if no longer needed.
+        'git_describe_command': 'git describe --dirty --tags --long --match {}'.format(
+            os.getenv(
+                'SETUPTOOLS_SCM_PREVIOUS_TAG',
+                '"v*.*" --exclude "*.dev*"'
+            )
+        ),
         'local_scheme': local_scheme,
         'write_to': 'github_release_cicd/version.py',
     },
