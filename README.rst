@@ -13,6 +13,13 @@ Installation
     $ pip install github-release-cicd
     $ pip install --upgrade github-release-cicd
 
+Usage
+-----
+
+::
+
+    $ github_release_cicd --help
+
 .. |PackageVersion| image:: https://img.shields.io/pypi/v/github-release-cicd.svg?style=flat
     :alt: PyPI version
     :target: https://pypi.org/project/github-release-cicd
