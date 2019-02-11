@@ -8,7 +8,7 @@ from setuptools import setup
 def local_scheme(version):
     from pkg_resources import iter_entry_points
 
-    # NOTE(awiddersheim): Modify default behaviour slighlty by not
+    # NOTE(awiddersheim): Modify default behaviour slightly by not
     # adding any local scheme to a clean `master` branch.
     if version.branch == 'master' and not version.dirty:
         return ''
