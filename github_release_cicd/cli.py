@@ -89,7 +89,7 @@ def create(repo, tag, name, message, draft, prerelease, target, assets):
 
     release = repo.create_git_release(
         tag=tag,
-        name=tag,
+        name=name,
         message=message,
         target_commitish=target,
         prerelease=prerelease,
