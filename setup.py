@@ -20,23 +20,14 @@ def local_scheme(version):
         return item.load()(version)
 
 
-with io.open('README.rst', encoding='utf-8') as f:
+with io.open('README.md', encoding='utf-8') as f:
     long_description = f.read()
 
 
 setup(
     name='github-release-cicd',
     use_scm_version={
-        # NOTE(awiddersheim): Pulling from an environment variable is a
-        # hack to get around the fact that `--exclude` for
-        # `git-describe` is not ubiquitous yet. Once that happens it can
-        # be removed if no longer needed.
-        'git_describe_command': 'git describe --dirty --tags --long --match {}'.format(
-            os.getenv(
-                'SETUPTOOLS_SCM_PREVIOUS_TAG',
-                '"v*.*" --exclude "*.dev*"',
-            ),
-        ),
+        'git_describe_command': 'git describe --dirty --tags --long --match "v*.*" --exclude "*.dev*" --first-parent',
         'local_scheme': local_scheme,
         'write_to': 'github_release_cicd/version.py',
     },
@@ -48,6 +39,7 @@ setup(
     url='https://github.com/awiddersheim/github-release-cicd',
     description='Helper tools to handle GitHub releases.',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     packages=find_packages(exclude=['tests', 'tests.*']),
     install_requires=[
         'click>=7',
